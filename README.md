@@ -54,12 +54,17 @@ Skills that don't need external tools (like `/sentiment-check`, `/tone-rewriter`
 
 | Skill | Description |
 |-------|-------------|
-| [Ticket Triage](ticket-triage/SKILL.md) | Pull open tickets and auto-classify by P0-P3 priority and category (bug, billing, howto, feature, account) |
+| [Ticket Triage](ticket-triage/SKILL.md) | Pull open Gorgias tickets and auto-classify by P0-P3 priority and category |
+| [Zendesk Triage](zendesk-triage/SKILL.md) | Pull open Zendesk tickets and triage by priority, category, and SLA status |
+| [Freshdesk Triage](freshdesk-triage/SKILL.md) | Pull open Freshdesk tickets and triage by priority, type, and SLA |
+| [Zoho Desk Triage](zoho-desk-triage/SKILL.md) | Pull open Zoho Desk tickets and triage by priority and department |
+| [Intercom Resolve](intercom-resolve/SKILL.md) | Manage and resolve Intercom conversations — triage, reply, snooze, or close |
 | [Inbox Zero](inbox-zero/SKILL.md) | Batch-scan unhandled tickets and suggest quick actions — reply, escalate, close, assign, or defer |
 | [Auto-Tag](auto-tag/SKILL.md) | Analyze untagged tickets and recommend tags based on content, with confidence scores |
 | [Merge Tickets](merge-tickets/SKILL.md) | Detect duplicate and related tickets using subject similarity, same-customer signals, and content matching |
 | [SLA Monitor](sla-monitor/SKILL.md) | Real-time SLA compliance dashboard — flags breaches, at-risk tickets, and tracks first-response / resolution times |
 | [Ticket Summarize](ticket-summarize/SKILL.md) | Condense long ticket threads into TL;DR, timeline, what's been tried, and clear action items |
+| [WhatsApp Support](whatsapp-support/SKILL.md) | Handle WhatsApp customer support conversations via Wati or Whautomate |
 
 ## Customer Intelligence
 
@@ -69,6 +74,8 @@ Skills that don't need external tools (like `/sentiment-check`, `/tone-rewriter`
 | [VIP Alert](vip-alert/SKILL.md) | Cross-reference open tickets against CRM to identify high-value customers needing priority treatment |
 | [Sentiment Check](sentiment-check/SKILL.md) | Analyze customer messages for sentiment (-2 to +2), urgency level, emotional signals, and churn risk |
 | [Contact Sync](contact-sync/SKILL.md) | Compare customer data across support and CRM systems to find missing contacts and data mismatches |
+| [Lead Enrich](lead-enrich/SKILL.md) | Enrich customer/lead profiles with business data using LeadIQ, RocketReach, or Clearout |
+| [Email Verify](email-verify/SKILL.md) | Bulk verify customer email addresses using Clearout or Mailcheck |
 | [Root Cause Analysis](root-cause/SKILL.md) | Analyze a cluster of related tickets to identify the underlying root cause with Five Whys framework |
 
 ## Communication
@@ -106,6 +113,22 @@ Skills that don't need external tools (like `/sentiment-check`, `/tone-rewriter`
 |-------|-------------|
 | [Knowledge Search](knowledge-search/SKILL.md) | Search the knowledge base for relevant articles to help resolve customer issues, with suggested responses |
 | [QA Response](qa-response/SKILL.md) | Review a drafted response for quality, accuracy, tone, and completeness before sending |
+| [Chatbot Review](chatbot-review/SKILL.md) | Review AI chatbot conversations for bad responses, hallucinations, and missed questions |
+
+## Feedback & Surveys
+
+| Skill | Description |
+|-------|-------------|
+| [NPS Collect](nps-collect/SKILL.md) | Send NPS/CSAT surveys and analyze results using Delighted or Satismeter |
+| [Feedback Digest](feedback-digest/SKILL.md) | Aggregate and analyze customer feedback from Delighted, GatherUp, Gleap, or Simplesat |
+
+## Sales & Outreach
+
+| Skill | Description |
+|-------|-------------|
+| [Outreach Campaign](outreach-campaign/SKILL.md) | Set up customer outreach sequences via Lemlist, Reply.io, or Woodpecker |
+| [Proposal Draft](proposal-draft/SKILL.md) | Draft and send client proposals via Better Proposals or Bidsketch |
+| [Call Summary](call-summary/SKILL.md) | Summarize customer support/sales calls from Dialpad or Leexi call logs |
 
 ---
 
