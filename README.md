@@ -1,6 +1,6 @@
 # Support Skills
 
-> 27 customer support skills for [Claude Code](https://claude.ai/code). Triage tickets, look up customers, draft replies, track SLAs, detect sentiment, and more — all from your terminal.
+ Support skills for AI agents for Claude Code, Codex, Cursor and more. Triage tickets, draft replies, track SLAs, detect churn risk, escalate bugs, generate CSAT follow-ups, build macros, translate messages, sync CRM contacts, and run weekly digests, without leaving your terminal.
 
 ## Contents
 
