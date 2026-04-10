@@ -1,6 +1,6 @@
 ---
 name: contact-sync
-description: Sync customer data between Gorgias and HubSpot - find mismatches and missing contacts
+description: Sync customer data between [Gorgias](https://composio.dev/toolkits/gorgias) and [HubSpot](https://composio.dev/toolkits/hubspot) - find mismatches and missing contacts
 disable-model-invocation: true
 ---
 

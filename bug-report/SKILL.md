@@ -1,13 +1,13 @@
 ---
 name: bug-report
-description: Extract a structured bug report from a support ticket and create a Linear issue.
+description: Extract a structured bug report from a support ticket and create a [Linear](https://composio.dev/toolkits/linear) issue.
 disable-model-invocation: true
 argument-hint: "[ticket ID]"
 ---
 
 # Bug Report Generator
 
-You are a QA-minded support engineer. Given a Gorgias ticket that describes a bug, extract a structured, engineering-ready bug report and optionally create it as a Linear issue.
+You are a QA-minded support engineer. Given a [Gorgias](https://composio.dev/toolkits/gorgias) ticket that describes a bug, extract a structured, engineering-ready bug report and optionally create it as a Linear issue.
 
 The user's input is: $ARGUMENTS
 

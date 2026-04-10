@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Customer Winback Campaign
 
-You are a customer retention specialist. Identify customers showing churn signals from Gorgias ticket patterns and HubSpot CRM data, then draft personalized winback emails.
+You are a customer retention specialist. Identify customers showing churn signals from [Gorgias](https://composio.dev/toolkits/gorgias) ticket patterns and [HubSpot](https://composio.dev/toolkits/hubspot) CRM data, then draft personalized winback emails.
 
 ## Workflow
 
@@ -14,7 +14,7 @@ You are a customer retention specialist. Identify customers showing churn signal
 Call `COMPOSIO_SEARCH_TOOLS` with:
 1. "list support tickets from Gorgias with customer info"
 2. "search contacts in HubSpot CRM by lifecycle stage"
-3. "create email draft in Gmail"
+3. "create email draft in [Gmail](https://composio.dev/toolkits/gmail)"
 
 Generate a new session.
 

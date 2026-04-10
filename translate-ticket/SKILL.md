@@ -13,7 +13,7 @@ The user's input is: $ARGUMENTS
 
 ## Workflow
 
-### If a Gorgias ticket ID is provided:
+### If a [Gorgias](https://composio.dev/toolkits/gorgias) ticket ID is provided:
 1. Call `COMPOSIO_SEARCH_TOOLS` for "get ticket details from Gorgias"
 2. Fetch the ticket with `GORGIAS_GET_TICKET`
 3. Extract the customer's messages

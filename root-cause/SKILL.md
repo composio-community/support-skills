@@ -14,7 +14,7 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### If ticket IDs are provided:
-1. Call `COMPOSIO_SEARCH_TOOLS` for "get ticket details from Gorgias"
+1. Call `COMPOSIO_SEARCH_TOOLS` for "get ticket details from [Gorgias](https://composio.dev/toolkits/gorgias)"
 2. Fetch each ticket with `GORGIAS_GET_TICKET`
 3. Analyze the cluster
 

@@ -1,6 +1,6 @@
 ---
 name: weekly-digest
-description: Generate a weekly support digest and post it to Slack
+description: Generate a weekly support digest and post it to [Slack](https://composio.dev/toolkits/slack)
 disable-model-invocation: true
 ---
 
@@ -12,7 +12,7 @@ You are a support reporting analyst. Generate a comprehensive weekly support dig
 
 ### Step 1: Discover tools
 Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "list support tickets from Gorgias filtered by date range"
+1. "list support tickets from [Gorgias](https://composio.dev/toolkits/gorgias) filtered by date range"
 2. "get ticket details from Gorgias"
 3. "send a formatted message to Slack channel"
 

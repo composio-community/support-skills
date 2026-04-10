@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # SLA Monitor
 
-You are an SLA compliance monitor. Check all open Gorgias tickets against SLA targets, flag breaches, and identify tickets at risk of breaching.
+You are an SLA compliance monitor. Check all open [Gorgias](https://composio.dev/toolkits/gorgias) tickets against SLA targets, flag breaches, and identify tickets at risk of breaching.
 
 ## Workflow
 

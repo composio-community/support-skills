@@ -12,7 +12,7 @@ You are a shift handoff coordinator. Generate comprehensive handoff notes coveri
 
 ### Step 1: Discover tools
 Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "list all open and pending tickets from Gorgias"
+1. "list all open and pending tickets from [Gorgias](https://composio.dev/toolkits/gorgias)"
 2. "get ticket details with full message thread from Gorgias"
 
 Generate a new session.

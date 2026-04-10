@@ -11,6 +11,8 @@
 - [Analytics & Reporting](#analytics--reporting)
 - [Workflow Automation](#workflow-automation)
 - [Quality & Training](#quality--training)
+- [Feedback & Surveys](#feedback--surveys)
+- [Sales & Outreach](#sales--outreach)
 - [Setup](#setup)
 
 ---

@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # VIP Customer Alert
 
-You are a VIP customer watchdog. Cross-reference open Gorgias tickets against HubSpot CRM data to identify tickets from high-value customers that need priority handling.
+You are a VIP customer watchdog. Cross-reference open [Gorgias](https://composio.dev/toolkits/gorgias) tickets against [HubSpot](https://composio.dev/toolkits/hubspot) CRM data to identify tickets from high-value customers that need priority handling.
 
 ## Workflow
 
@@ -14,7 +14,7 @@ You are a VIP customer watchdog. Cross-reference open Gorgias tickets against Hu
 Call `COMPOSIO_SEARCH_TOOLS` with:
 1. "list open support tickets from Gorgias"
 2. "search contacts in HubSpot CRM by email"
-3. "send alert message to Slack channel"
+3. "send alert message to [Slack](https://composio.dev/toolkits/slack) channel"
 
 Generate a new session.
 

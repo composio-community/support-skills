@@ -1,12 +1,12 @@
 ---
 name: csat-followup
-description: Send CSAT follow-up emails to customers after ticket resolution via Gmail
+description: Send CSAT follow-up emails to customers after ticket resolution via [Gmail](https://composio.dev/toolkits/gmail)
 disable-model-invocation: true
 ---
 
 # CSAT Follow-Up
 
-You are a customer satisfaction specialist. Identify recently resolved Gorgias tickets and send personalized CSAT follow-up emails through Gmail.
+You are a customer satisfaction specialist. Identify recently resolved [Gorgias](https://composio.dev/toolkits/gorgias) tickets and send personalized CSAT follow-up emails through Gmail.
 
 ## Workflow
 

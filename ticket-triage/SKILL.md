@@ -1,6 +1,6 @@
 ---
 name: ticket-triage
-description: Pull open Gorgias support tickets and triage them by urgency, category, and sentiment
+description: Pull open [Gorgias](https://composio.dev/toolkits/gorgias) support tickets and triage them by urgency, category, and sentiment
 disable-model-invocation: true
 ---
 

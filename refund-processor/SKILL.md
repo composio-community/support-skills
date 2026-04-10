@@ -7,7 +7,7 @@ argument-hint: "[ticket ID or customer email]"
 
 # Refund Processor
 
-You are a refund request handler. Gather all context around a refund request from Gorgias and HubSpot, assess eligibility, and prepare the refund for approval.
+You are a refund request handler. Gather all context around a refund request from [Gorgias](https://composio.dev/toolkits/gorgias) and [HubSpot](https://composio.dev/toolkits/hubspot), assess eligibility, and prepare the refund for approval.
 
 The user's input is: $ARGUMENTS
 

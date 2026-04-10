@@ -1,6 +1,6 @@
 ---
 name: merge-tickets
-description: Find and flag duplicate or related Gorgias tickets that should be merged
+description: Find and flag duplicate or related [Gorgias](https://composio.dev/toolkits/gorgias) tickets that should be merged
 disable-model-invocation: true
 ---
 

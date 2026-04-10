@@ -1,6 +1,6 @@
 ---
 name: customer-360
-description: Full customer lookup across Gorgias tickets and HubSpot CRM.
+description: Full customer lookup across [Gorgias](https://composio.dev/toolkits/gorgias) tickets and [HubSpot](https://composio.dev/toolkits/hubspot) CRM.
 disable-model-invocation: true
 argument-hint: "[customer email or name]"
 ---

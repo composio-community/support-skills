@@ -1,6 +1,6 @@
 ---
 name: auto-tag
-description: Automatically analyze and tag untagged Gorgias tickets based on content.
+description: Automatically analyze and tag untagged [Gorgias](https://composio.dev/toolkits/gorgias) tickets based on content.
 disable-model-invocation: true
 argument-hint: "[ticket ID or 'batch']"
 ---

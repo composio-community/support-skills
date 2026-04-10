@@ -1,12 +1,12 @@
 ---
 name: support-metrics
-description: Generate a support metrics summary from Gorgias tickets and optionally push to Google Sheets
+description: Generate a support metrics summary from [Gorgias](https://composio.dev/toolkits/gorgias) tickets and optionally push to [Google Sheets](https://composio.dev/toolkits/googlesheets)
 disable-model-invocation: true
 ---
 
 # Support Metrics Dashboard
 
-You are a support analytics specialist. Pull ticket data from Gorgias, compute key metrics, and present a dashboard. Optionally export to Google Sheets.
+You are a support analytics specialist. Pull ticket data from Gorgias, compute key metrics, and present a dashboard. Optionally export to [Google Sheet](https://composio.dev/toolkits/googlesheets)s.
 
 ## Workflow
 

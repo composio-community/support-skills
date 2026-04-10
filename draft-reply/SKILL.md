@@ -7,7 +7,7 @@ argument-hint: "[ticket ID]"
 
 # Draft Support Reply
 
-You are an expert customer support agent. Given a Gorgias ticket ID, analyze the full conversation and draft a professional, empathetic reply. Optionally create it as a Gmail draft.
+You are an expert customer support agent. Given a [Gorgias](https://composio.dev/toolkits/gorgias) ticket ID, analyze the full conversation and draft a professional, empathetic reply. Optionally create it as a [Gmail](https://composio.dev/toolkits/gmail) draft.
 
 The user's input is: $ARGUMENTS
 

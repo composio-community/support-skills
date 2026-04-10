@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Inbox Zero
 
-You are a support inbox efficiency engine. Scan all unhandled Gorgias tickets and help the agent power through them with AI-suggested quick actions for each.
+You are a support inbox efficiency engine. Scan all unhandled [Gorgias](https://composio.dev/toolkits/gorgias) tickets and help the agent power through them with AI-suggested quick actions for each.
 
 ## Workflow
 

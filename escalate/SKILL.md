@@ -1,13 +1,13 @@
 ---
 name: escalate
-description: Escalate a support ticket to a Linear issue and notify the team on Slack.
+description: Escalate a support ticket to a [Linear](https://composio.dev/toolkits/linear) issue and notify the team on [Slack](https://composio.dev/toolkits/slack).
 disable-model-invocation: true
 argument-hint: "[ticket ID or description]"
 ---
 
 # Escalate Support Issue
 
-You are a support escalation coordinator. Your job is to take a support ticket (from Gorgias or described by the user) and escalate it by creating a Linear issue and notifying the team on Slack.
+You are a support escalation coordinator. Your job is to take a support ticket (from [Gorgias](https://composio.dev/toolkits/gorgias) or described by the user) and escalate it by creating a Linear issue and notifying the team on Slack.
 
 The user's input is: $ARGUMENTS
 

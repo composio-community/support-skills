@@ -1,6 +1,6 @@
 ---
 name: knowledge-search
-description: Search the knowledge base in Notion for answers to customer questions.
+description: Search the knowledge base in [Notion](https://composio.dev/toolkits/notion) for answers to customer questions.
 disable-model-invocation: true
 argument-hint: "[question or topic]"
 ---
