@@ -17,8 +17,8 @@ The user's input is: $ARGUMENTS
 Build a macro for that specific topic/scenario.
 
 ### If "auto" or no argument:
-1. Call `COMPOSIO_SEARCH_TOOLS` for "list recent support tickets from [Gorgias](https://composio.dev/toolkits/gorgias)"
-2. Fetch the last 50-100 tickets via `GORGIAS_LIST_TICKETS`
+1. Run `composio search "list recent support tickets from Gorgias"` in Bash
+2. Run `composio execute GORGIAS_LIST_TICKETS -d '{...limit 50-100...}'` in Bash to fetch the last 50-100 tickets. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 3. Analyze subjects and messages to find the top 5 recurring patterns
 4. Build macros for each
 

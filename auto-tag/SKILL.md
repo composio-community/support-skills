@@ -14,19 +14,14 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "list tickets from Gorgias filtered by tags"
-2. "get ticket details from Gorgias"
-3. "list all available ticket tags in Gorgias"
-
-Generate a new session.
+Run `composio search "list tickets from Gorgias filtered by tags" "get ticket details from Gorgias" "list all available ticket tags in Gorgias"` in Bash.
 
 ### Step 2: Get available tags
-Call `GORGIAS_LIST_TICKET_TAGS` to get the full set of tags configured in the system.
+Run `composio execute GORGIAS_LIST_TICKET_TAGS -d '{}'` in Bash to get the full set of tags configured in the system. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 
 ### Step 3: Fetch tickets
-- If a specific ticket ID was given: fetch that ticket with `GORGIAS_GET_TICKET`
-- If "batch" or no argument: fetch recent untagged tickets with `GORGIAS_LIST_TICKETS`
+- If a specific ticket ID was given: run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash
+- If "batch" or no argument: run `composio execute GORGIAS_LIST_TICKETS -d '{...filter for untagged...}'` in Bash
 
 ### Step 4: Classify each ticket
 For each ticket, read the subject + message body and determine:

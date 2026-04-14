@@ -14,19 +14,17 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "get support ticket details from Gorgias"
-2. "search contact and deal info in HubSpot CRM"
-
-Generate a new session.
+Run `composio search "get support ticket details from Gorgias" "search contact and deal info in HubSpot CRM"` in Bash.
 
 ### Step 2: Gather context
-In parallel:
-- `GORGIAS_GET_TICKET` - Get the ticket with the refund request
-- `HUBSPOT_SEARCH_CONTACTS_BY_CRITERIA` - Look up the customer in CRM
+Run these in parallel Bash calls (or via `composio execute --parallel GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}' HUBSPOT_SEARCH_CONTACTS_BY_CRITERIA -d '{"email":"<email>"}'`):
+- `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` — Get the ticket with the refund request
+- `composio execute HUBSPOT_SEARCH_CONTACTS_BY_CRITERIA -d '{"email":"<email>"}'` — Look up the customer in CRM
+
+If the CLI reports a toolkit isn't connected, ask the user to run `composio link gorgias` or `composio link hubspot` and retry.
 
 ### Step 3: Deep dive on customer
-From HubSpot, pull:
+Parse the JSON output from Step 2. From HubSpot, pull:
 - Account tenure (how long they've been a customer)
 - Plan/subscription details
 - Total lifetime value

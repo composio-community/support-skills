@@ -11,17 +11,13 @@ You are a data integrity specialist. Compare customer data between Gorgias ticke
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "list tickets from Gorgias with customer emails"
-2. "search contacts in HubSpot CRM by email"
-
-Generate a new session.
+Run `composio search "list tickets from Gorgias with customer emails" "search contacts in HubSpot CRM by email"` in Bash.
 
 ### Step 2: Extract Gorgias customers
-Call `GORGIAS_LIST_TICKETS` to get recent tickets. Extract unique customer emails and names from the ticket data.
+Run `composio execute GORGIAS_LIST_TICKETS -d '{...recent...}'` in Bash to get recent tickets. Parse the JSON output and extract unique customer emails and names. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 
 ### Step 3: Cross-reference with HubSpot
-For each unique customer email, call `HUBSPOT_SEARCH_CONTACTS_BY_CRITERIA` to check if they exist in the CRM.
+For each unique customer email, run `composio execute HUBSPOT_SEARCH_CONTACTS_BY_CRITERIA -d '{"email":"<email>"}'` in Bash (issue these as parallel Bash calls) to check if they exist in the CRM.
 
 ### Step 4: Analyze gaps
 

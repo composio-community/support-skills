@@ -14,15 +14,10 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with three queries:
-1. "get support ticket details from Gorgias"
-2. "create a bug issue in Linear with team assignment"
-3. "send a message to a Slack channel"
-
-Generate a new session.
+Run `composio search "get support ticket details from Gorgias" "create a bug issue in Linear with team assignment" "send a message to a Slack channel"` in Bash.
 
 ### Step 2: Get tool schemas
-Call `COMPOSIO_GET_TOOL_SCHEMAS` for:
+Run `composio execute <SLUG> --get-schema` in Bash (in parallel) for:
 - `GORGIAS_GET_TICKET`
 - `LINEAR_CREATE_LINEAR_ISSUE`
 - `LINEAR_LIST_LINEAR_TEAMS`
@@ -31,14 +26,15 @@ Call `COMPOSIO_GET_TOOL_SCHEMAS` for:
 
 ### Step 3: Gather context
 If a Gorgias ticket ID was provided:
-- Fetch the ticket details with `GORGIAS_GET_TICKET`
-- Extract: subject, customer info, message thread, tags, current status
+- Run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash
+- Parse the JSON output and extract: subject, customer info, message thread, tags, current status
+- If the CLI reports a toolkit isn't connected, ask the user to run `composio link <toolkit>` and retry.
 
 If a text description was provided instead, use that directly.
 
-In parallel, fetch:
-- `LINEAR_LIST_LINEAR_TEAMS` to find the right team
-- `SLACK_FIND_CHANNELS` to find the support/escalation channel
+In parallel Bash calls, also fetch:
+- `composio execute LINEAR_LIST_LINEAR_TEAMS -d '{}'` to find the right team
+- `composio execute SLACK_FIND_CHANNELS -d '{...}'` to find the support/escalation channel
 
 ### Step 4: Confirm with user
 Present the escalation plan before executing:
@@ -66,7 +62,7 @@ Proceed? (y/n)
 Wait for user confirmation before proceeding.
 
 ### Step 5: Execute escalation
-After confirmation, first create the Linear issue via `COMPOSIO_MULTI_EXECUTE_TOOL` with `LINEAR_CREATE_LINEAR_ISSUE`, then send a Slack notification via `SLACK_SEND_MESSAGE` including the Linear issue link.
+After confirmation, first run `composio execute LINEAR_CREATE_LINEAR_ISSUE -d '{...team_id, title, description, priority...}'` in Bash. Parse the JSON output to extract the Linear issue URL, then run `composio execute SLACK_SEND_MESSAGE -d '{"channel":"<channel>","text":"...<Linear issue link>..."}'` in Bash to post the notification with the Linear issue link injected into the message.
 
 The Slack message should include:
 - Ticket reference

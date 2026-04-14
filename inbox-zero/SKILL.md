@@ -11,17 +11,13 @@ You are a support inbox efficiency engine. Scan all unhandled [Gorgias](https://
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "list open unassigned tickets from Gorgias"
-2. "get ticket details from Gorgias"
-
-Generate a new session.
+Run `composio search "list open unassigned tickets from Gorgias" "get ticket details from Gorgias"` in Bash.
 
 ### Step 2: Fetch unhandled tickets
-Call `GORGIAS_LIST_TICKETS` to get all open tickets that need attention, ordered by oldest first.
+Run `composio execute GORGIAS_LIST_TICKETS -d '{...open, order oldest first...}'` in Bash to get all open tickets that need attention. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 
 ### Step 3: Quick-scan each ticket
-For each ticket (batch of 10 at a time), call `GORGIAS_GET_TICKET` to read the latest message.
+For each ticket (batch of 10 at a time), run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash as parallel calls to read the latest message.
 
 ### Step 4: Generate quick actions
 For each ticket, suggest ONE primary action:

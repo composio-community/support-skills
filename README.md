@@ -23,10 +23,13 @@
 # 1. Install Claude Code
 npm install -g @anthropic-ai/claude-code
 
-# 2. Add the Composio MCP server (connects to Gorgias, HubSpot, Slack, etc.)
-claude mcp add composio-mcp --transport http https://connect.composio.dev/mcp
+# 2. Install the Composio CLI (connects to Gorgias, HubSpot, Slack, etc.)
+curl -fsSL https://composio.dev/install | bash
 
-# 3. Clone and install the skills
+# 3. Authenticate with Composio
+composio login
+
+# 4. Clone and install the skills
 git clone https://github.com/composiohq/support-skills.git
 cd support-skills
 ./install.sh /path/to/your/project
@@ -44,7 +47,7 @@ claude
 > /tone-rewriter empathetic "Your request has been processed."
 ```
 
-On first run, Claude will prompt you to authenticate with each app it needs — just follow the browser link and you're set.
+Skills shell out to the `composio` CLI to run tools. If a skill tries to call a toolkit that isn't connected yet, the CLI will tell you — just run `composio link <toolkit>` and retry.
 
 Skills that don't need external tools (like `/sentiment-check`, `/tone-rewriter`, `/qa-response`, `/angry-customer-playbook`, `/response-templates`) work immediately with no setup.
 
@@ -140,19 +143,36 @@ Skills that don't need external tools (like `/sentiment-check`, `/tone-rewriter`
 npm install -g @anthropic-ai/claude-code
 ```
 
-### Add the MCP server
+### Install the Composio CLI
 
-These skills use [Composio](https://composio.dev) to connect to your support tools (Gorgias, HubSpot, Slack, etc.). Add the MCP server to your Claude Code config:
+These skills use the [Composio](https://composio.dev) CLI to connect to your support tools (Gorgias, HubSpot, Slack, etc.). Install it with:
 
 ```bash
-claude mcp add composio-mcp --transport http https://connect.composio.dev/mcp
+curl -fsSL https://composio.dev/install | bash
 ```
 
-This registers the Composio MCP server so Claude Code can discover and call tools across your connected apps.
+Then authenticate:
+
+```bash
+composio login
+composio whoami
+```
+
+`composio login` opens a browser-based flow, then prompts you to choose your default organization and project. `composio whoami` shows your current session context.
 
 ### Connect your apps
 
-On first use, Claude will prompt you to authenticate with each app it needs. You'll get a browser link to authorize access — just click through and you're set. Supported apps:
+Connect each toolkit you plan to use with `composio link <toolkit>`:
+
+```bash
+composio link gorgias
+composio link hubspot
+composio link gmail
+composio link slack
+composio link linear
+```
+
+You don't have to do this upfront — if a skill tries to call a toolkit that isn't connected, the CLI will tell you and you can run `composio link` then retry. Supported apps:
 
 - **Gorgias** — Support tickets
 - **HubSpot** — CRM, contacts, deals
@@ -168,14 +188,15 @@ On first use, Claude will prompt you to authenticate with each app it needs. You
 
 Each skill is a directory with a `SKILL.md` file — a self-contained prompt that tells Claude what to do. The install script copies them into your project's `.claude/skills/` directory where Claude Code picks them up as `/slash-commands`.
 
-Skills that integrate with external apps:
+Skills that integrate with external apps shell:
 
-1. **Discover** the right tools for the task
-2. **Fetch schemas** to know the exact parameters needed
-3. **Execute** tool calls to pull/push data across connected apps
-4. **Analyze** the results using Claude's reasoning
-5. **Present** structured, actionable output
-6. **Confirm** before taking any external action (sending emails, creating issues, posting messages)
+1. **Discover** the right tool slug with `composio search "<task description>"`
+2. **Inspect** the schema with `composio execute <TOOL_SLUG> --get-schema` (or `--dry-run` for a safe preview)
+3. **Execute** the tool with `composio execute <TOOL_SLUG> -d '{...}'`
+4. **Recover** from missing connections by running `composio link <toolkit>` and retrying
+5. **Analyze** the results using Claude's reasoning
+6. **Present** structured, actionable output
+7. **Confirm** before taking any external action (sending emails, creating issues, posting messages)
 
 Standalone skills (sentiment, tone, QA, templates) work purely with Claude's reasoning — no external connections needed.
 

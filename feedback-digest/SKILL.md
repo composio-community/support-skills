@@ -11,16 +11,10 @@ You are a voice-of-customer analyst. Aggregate feedback from multiple platforms,
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- use_case: "get customer feedback and survey responses from Delighted"
-- use_case: "get customer reviews from GatherUp"
-- use_case: "get bug reports and feedback from Gleap"
-- use_case: "get CSAT survey responses from Simplesat"
-
-Generate a new session.
+Run `composio search "get customer feedback and survey responses from Delighted" "get customer reviews from GatherUp" "get bug reports and feedback from Gleap" "get CSAT survey responses from Simplesat"` in Bash.
 
 ### Step 2: Pull feedback
-Fetch recent feedback from all connected platforms in parallel. Get the last 7-30 days depending on volume.
+Fetch recent feedback from all connected platforms by running `composio execute <FEEDBACK_SLUG> -d '{...date range 7-30 days...}'` in Bash as parallel calls (or via `composio execute --parallel <SLUG_A> -d '{...}' <SLUG_B> -d '{...}'`). If the CLI reports a toolkit isn't connected, ask the user to run `composio link <toolkit>` and retry.
 
 ### Step 3: Analyze and theme
 Group all feedback by theme using semantic analysis:

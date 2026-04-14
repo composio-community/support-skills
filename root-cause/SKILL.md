@@ -14,13 +14,13 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### If ticket IDs are provided:
-1. Call `COMPOSIO_SEARCH_TOOLS` for "get ticket details from [Gorgias](https://composio.dev/toolkits/gorgias)"
-2. Fetch each ticket with `GORGIAS_GET_TICKET`
+1. Run `composio search "get ticket details from Gorgias"` in Bash
+2. Run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash (in parallel) for each ticket. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 3. Analyze the cluster
 
 ### If a topic/keyword is provided:
-1. Search for related tickets with `GORGIAS_LIST_TICKETS`
-2. Fetch details for matches
+1. Run `composio execute GORGIAS_LIST_TICKETS -d '{...keyword filter...}'` in Bash to search for related tickets
+2. Run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash (in parallel) to fetch details for matches
 3. Analyze the pattern
 
 ### If raw descriptions are pasted:

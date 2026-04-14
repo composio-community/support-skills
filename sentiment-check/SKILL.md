@@ -14,9 +14,9 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### If a [Gorgias](https://composio.dev/toolkits/gorgias) ticket ID is provided:
-1. Call `COMPOSIO_SEARCH_TOOLS` for "get ticket details from Gorgias"
-2. Get the schema and fetch the ticket with `GORGIAS_GET_TICKET`
-3. Extract all customer messages from the thread
+1. Run `composio search "get ticket details from Gorgias"` in Bash
+2. Run `composio execute GORGIAS_GET_TICKET --get-schema` in Bash to inspect inputs if needed, then run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
+3. Parse the JSON output and extract all customer messages from the thread
 
 ### If raw text is provided:
 Use the text directly for analysis.

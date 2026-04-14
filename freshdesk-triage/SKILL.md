@@ -11,20 +11,16 @@ You are a support triage specialist. Pull open tickets from Freshdesk, analyze t
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- use_case: "list open tickets from Freshdesk with priority and status"
-- use_case: "get Freshdesk ticket details with conversations"
-
-Generate a new session.
+Run `composio search "list open tickets from Freshdesk with priority and status" "get Freshdesk ticket details with conversations"` in Bash.
 
 ### Step 2: Get tool schemas
-Call `COMPOSIO_GET_TOOL_SCHEMAS` for the returned Freshdesk tool slugs.
+Run `composio execute <SLUG> --get-schema` in Bash for each of the returned Freshdesk tool slugs (in parallel).
 
 ### Step 3: Fetch open tickets
-Execute the list/search tickets tool to fetch open and pending tickets, ordered by created date descending.
+Run `composio execute <LIST_TICKETS_SLUG> -d '{...open/pending, order by created date desc...}'` in Bash to fetch open and pending tickets. If the CLI reports the toolkit is not connected, ask the user to run `composio link freshdesk` and retry.
 
 ### Step 4: Get ticket details
-For up to 15 tickets, fetch full ticket details with conversation threads in parallel.
+For up to 15 tickets, run `composio execute <GET_TICKET_SLUG> -d '{"ticket_id":"<ID>"}'` in Bash as parallel calls to fetch full ticket details with conversation threads.
 
 ### Step 5: Triage and present
 

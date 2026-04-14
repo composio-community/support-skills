@@ -11,20 +11,16 @@ You are a support triage specialist. Pull open tickets from Zendesk, analyze the
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- use_case: "list open support tickets from Zendesk with priority and status"
-- use_case: "get Zendesk ticket details with comments"
-
-Generate a new session.
+Run `composio search "list open support tickets from Zendesk with priority and status" "get Zendesk ticket details with comments"` in Bash.
 
 ### Step 2: Get tool schemas
-Call `COMPOSIO_GET_TOOL_SCHEMAS` for the returned Zendesk tool slugs.
+Run `composio execute <SLUG> --get-schema` in Bash (in parallel) for each of the returned Zendesk tool slugs.
 
 ### Step 3: Fetch open tickets
-Execute the list tickets tool to fetch recent open/pending tickets, sorted newest first. Paginate if needed.
+Run `composio execute <LIST_TICKETS_SLUG> -d '{...open/pending, newest first...}'` in Bash to fetch recent open/pending tickets. Paginate if needed. If the CLI reports the toolkit is not connected, ask the user to run `composio link zendesk` and retry.
 
 ### Step 4: Get ticket details
-For the top 15 tickets, fetch full details including comments/conversations in parallel.
+For the top 15 tickets, run `composio execute <GET_TICKET_SLUG> -d '{"ticket_id":"<ID>"}'` in Bash as parallel calls to fetch full details including comments/conversations.
 
 ### Step 5: Triage and present
 

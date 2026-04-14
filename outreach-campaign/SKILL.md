@@ -14,12 +14,7 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- use_case: "create email campaign sequence in Lemlist"
-- use_case: "add contacts to outreach campaign in Reply.io"
-- use_case: "create cold email campaign in Woodpecker"
-
-Generate a new session.
+Run `composio search "create email campaign sequence in Lemlist" "add contacts to outreach campaign in Reply.io" "create cold email campaign in Woodpecker"` in Bash. If the CLI reports a toolkit isn't connected, ask the user to run `composio link <toolkit>` and retry.
 
 ### Step 2: Define the campaign
 Based on user input, determine:
@@ -60,8 +55,8 @@ Body: [draft]
 
 ### Step 4: Confirm and create
 Present the full campaign for review. After user approval:
-1. Create the campaign/sequence in the outreach tool
-2. Add contacts
+1. Run `composio execute <CREATE_CAMPAIGN_SLUG> -d '{...name, sequence, settings...}'` in Bash to create the campaign/sequence in the outreach tool
+2. Parse the JSON output to extract the campaign_id, then run `composio execute <ADD_CONTACTS_SLUG> -d '{"campaign_id":"<id>","contacts":[...]}'` in Bash to add contacts
 3. Confirm setup with campaign link
 
 Never activate/start the campaign without explicit user confirmation.

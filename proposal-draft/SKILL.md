@@ -14,11 +14,7 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- use_case: "create a proposal in Better Proposals"
-- use_case: "create a proposal in Bidsketch"
-
-Generate a new session.
+Run `composio search "create a proposal in Better Proposals" "create a proposal in Bidsketch"` in Bash. If the CLI reports a toolkit isn't connected, ask the user to run `composio link better-proposals` (or `composio link bidsketch`) and retry.
 
 ### Step 2: Gather context
 From the user's input, determine:
@@ -65,4 +61,4 @@ If the user references a HubSpot deal or support ticket, pull that context too.
 ```
 
 ### Step 4: Create in platform
-After user approval, create the proposal in Better Proposals or Bidsketch and return the shareable link.
+After user approval, run `composio execute <CREATE_PROPOSAL_SLUG> -d '{...title, client, scope, pricing...}'` in Bash to create the proposal in Better Proposals or Bidsketch. Parse the JSON output and return the shareable link.

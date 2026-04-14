@@ -11,18 +11,13 @@ You are a customer satisfaction specialist. Identify recently resolved [Gorgias]
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "list recently closed tickets from Gorgias"
-2. "get ticket details from Gorgias"
-3. "send email via Gmail"
-
-Generate a new session.
+Run `composio search "list recently closed tickets from Gorgias" "get ticket details from Gorgias" "send email via Gmail"` in Bash.
 
 ### Step 2: Fetch resolved tickets
-Call `GORGIAS_LIST_TICKETS` filtering for tickets closed in the last 24-48 hours.
+Run `composio execute GORGIAS_LIST_TICKETS -d '{...filter for tickets closed in the last 24-48 hours...}'` in Bash. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 
 ### Step 3: Get ticket details
-For each resolved ticket, call `GORGIAS_GET_TICKET` to get:
+For each resolved ticket, run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash (in parallel) to get:
 - Customer name and email
 - Issue subject and resolution
 - Number of messages exchanged
@@ -67,4 +62,4 @@ Send all / Select specific ones / Edit first?
 ```
 
 ### Step 6: Send via Gmail
-After confirmation, send each email using `GMAIL_SEND_EMAIL` via `COMPOSIO_MULTI_EXECUTE_TOOL`. Report delivery status for each.
+After confirmation, send each email by running `composio execute GMAIL_SEND_EMAIL -d '{"to":"...","subject":"...","body":"..."}'` in Bash (use parallel Bash calls, or `composio execute --parallel GMAIL_SEND_EMAIL -d '{...}' GMAIL_SEND_EMAIL -d '{...}'` for a batch). Report delivery status for each.

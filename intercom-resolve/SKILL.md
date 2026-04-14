@@ -11,18 +11,13 @@ You are an Intercom support specialist. Pull open conversations, triage them, an
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- use_case: "list open conversations from Intercom"
-- use_case: "get Intercom conversation details with messages"
-- use_case: "reply to Intercom conversation"
-
-Generate a new session.
+Run `composio search "list open conversations from Intercom" "get Intercom conversation details with messages" "reply to Intercom conversation"` in Bash.
 
 ### Step 2: Get tool schemas
-Call `COMPOSIO_GET_TOOL_SCHEMAS` for the returned Intercom tool slugs.
+Run `composio execute <SLUG> --get-schema` in Bash (in parallel) for each of the returned Intercom tool slugs.
 
 ### Step 3: Fetch open conversations
-List all open/snoozed conversations, sorted by most recent activity.
+Run `composio execute <LIST_CONVERSATIONS_SLUG> -d '{...open/snoozed, sort by most recent activity...}'` in Bash. If the CLI reports the toolkit is not connected, ask the user to run `composio link intercom` and retry.
 
 ### Step 4: Analyze each conversation
 For the top 15, fetch full conversation history and classify:

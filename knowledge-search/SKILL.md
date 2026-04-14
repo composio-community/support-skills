@@ -14,22 +14,18 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "search for pages in Notion by title or content"
-2. "get page content as markdown from Notion"
-
-Generate a new session.
+Run `composio search "search for pages in Notion by title or content" "get page content as markdown from Notion"` in Bash.
 
 ### Step 2: Check Notion connection
-If Notion is not connected, prompt the user to connect it via `COMPOSIO_MANAGE_CONNECTIONS` for toolkit "notion". Show them the auth link and wait.
+If the CLI reports the Notion toolkit is not connected, ask the user to run `composio link notion` and retry.
 
 ### Step 3: Search Notion
-Call `NOTION_SEARCH_NOTION_PAGE` with the user's query. Try both:
+Run `composio execute NOTION_SEARCH_NOTION_PAGE -d '{"query":"<user query>"}'` in Bash with the user's query. Try both:
 - Exact page name search
 - Keyword-based search query
 
 ### Step 4: Retrieve content
-For the top 3-5 matching pages, call `NOTION_GET_PAGE_MARKDOWN` to get the full content.
+For the top 3-5 matching pages, run `composio execute NOTION_GET_PAGE_MARKDOWN -d '{"page_id":"<id>"}'` in Bash as parallel calls to get the full content.
 
 ### Step 5: Present findings
 

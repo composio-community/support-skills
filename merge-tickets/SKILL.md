@@ -11,14 +11,10 @@ You are a ticket deduplication specialist. Scan recent Gorgias tickets to find d
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- "list recent support tickets from Gorgias"
-- "get ticket details from Gorgias"
-
-Generate a new session.
+Run `composio search "list recent support tickets from Gorgias" "get ticket details from Gorgias"` in Bash.
 
 ### Step 2: Fetch recent tickets
-Call `GORGIAS_LIST_TICKETS` to fetch the last 50-100 open/pending tickets.
+Run `composio execute GORGIAS_LIST_TICKETS -d '{...limit 50-100, open/pending...}'` in Bash to fetch the last 50-100 open/pending tickets. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 
 ### Step 3: Get details for comparison
 For each ticket, extract:
@@ -28,7 +24,7 @@ For each ticket, extract:
 - Tags
 - Creation date
 
-Use `GORGIAS_GET_TICKET` for tickets where the list doesn't provide enough detail.
+Run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash (in parallel) for tickets where the list doesn't provide enough detail.
 
 ### Step 4: Detect duplicates
 Apply these matching heuristics:

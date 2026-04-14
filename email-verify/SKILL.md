@@ -14,11 +14,7 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- use_case: "verify email address validity using Clearout"
-- use_case: "check email deliverability using Mailcheck"
-
-Generate a new session.
+Run `composio search "verify email address validity using Clearout" "check email deliverability using Mailcheck"` in Bash.
 
 ### Step 2: Parse input
 Accept:
@@ -27,7 +23,7 @@ Accept:
 - A request to pull emails from Gorgias/HubSpot contacts
 
 ### Step 3: Verify
-Run each email through the verification tool(s) via `COMPOSIO_MULTI_EXECUTE_TOOL`.
+Run each email through the verification tool by issuing `composio execute <VERIFY_SLUG> -d '{"email":"<email>"}'` in Bash as parallel calls (or via `composio execute --parallel <SLUG> -d '{...}' <SLUG> -d '{...}'` for a batch). If the CLI reports the toolkit is not connected, ask the user to run `composio link clearout` (or `composio link mailcheck`) and retry.
 
 ### Step 4: Present results
 

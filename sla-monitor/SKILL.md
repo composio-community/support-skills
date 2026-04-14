@@ -11,11 +11,7 @@ You are an SLA compliance monitor. Check all open [Gorgias](https://composio.dev
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- "list open support tickets from Gorgias with timestamps"
-- "get ticket details with message timestamps from Gorgias"
-
-Generate a new session.
+Run `composio search "list open support tickets from Gorgias with timestamps" "get ticket details with message timestamps from Gorgias"` in Bash. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 
 ### Step 2: Define SLA targets
 Use these defaults (or ask the user for their SLA targets):
@@ -24,10 +20,10 @@ Use these defaults (or ask the user for their SLA targets):
 - **Next Reply Time:** 2 hours after customer responds
 
 ### Step 3: Fetch open tickets
-Call `GORGIAS_LIST_TICKETS` for all open/pending tickets. Paginate to get the full set.
+Run `composio execute GORGIAS_LIST_TICKETS -d '{...open/pending...}'` in Bash for all open/pending tickets. Paginate to get the full set.
 
 ### Step 4: Compute SLA status
-For each ticket, call `GORGIAS_GET_TICKET` to get message timestamps:
+For each ticket, run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash (in parallel) to get message timestamps:
 - Calculate time since ticket creation
 - Calculate time since last customer message
 - Determine if first response was sent and when

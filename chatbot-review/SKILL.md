@@ -11,15 +11,10 @@ You are a chatbot quality analyst. Review recent AI chatbot conversations to fin
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- use_case: "get chatbot conversation logs from Botsonic"
-- use_case: "list chatbot interactions from Docsbot"
-- use_case: "get Landbot conversation history"
-
-Generate a new session.
+Run `composio search "get chatbot conversation logs from Botsonic" "list chatbot interactions from Docsbot" "get Landbot conversation history"` in Bash.
 
 ### Step 2: Fetch recent conversations
-Pull the last 50 chatbot conversations/interactions.
+Run `composio execute <LIST_CONVERSATIONS_SLUG> -d '{...limit 50...}'` in Bash to pull the last 50 chatbot conversations/interactions. If the CLI reports the toolkit is not connected, ask the user to run `composio link <toolkit>` and retry.
 
 ### Step 3: Analyze each conversation
 For each, evaluate:

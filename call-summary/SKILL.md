@@ -14,15 +14,13 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- use_case: "get call recordings and transcripts from Dialpad"
-- use_case: "get call analytics and transcripts from Leexi"
-
-Generate a new session.
+Run `composio search "get call recordings and transcripts from Dialpad" "get call analytics and transcripts from Leexi"` in Bash.
 
 ### Step 2: Fetch call data
-- If a call ID is given: fetch that specific call
-- If "recent" or no argument: fetch the last 5-10 calls
+- If a call ID is given: run `composio execute <CALL_TOOL_SLUG> -d '{"call_id":"<ID>"}'` in Bash
+- If "recent" or no argument: run `composio execute <CALL_TOOL_SLUG> -d '{...limit 5-10...}'` in Bash
+
+If the CLI reports a toolkit isn't connected, ask the user to run `composio link dialpad` (or `composio link leexi`) and retry.
 
 ### Step 3: Analyze and summarize
 

@@ -11,17 +11,13 @@ You are a shift handoff coordinator. Generate comprehensive handoff notes coveri
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "list all open and pending tickets from [Gorgias](https://composio.dev/toolkits/gorgias)"
-2. "get ticket details with full message thread from Gorgias"
-
-Generate a new session.
+Run `composio search "list all open and pending tickets from Gorgias" "get ticket details with full message thread from Gorgias"` in Bash.
 
 ### Step 2: Fetch all active tickets
-Call `GORGIAS_LIST_TICKETS` for open and pending tickets. Sort by last update.
+Run `composio execute GORGIAS_LIST_TICKETS -d '{...open and pending, sort by last update...}'` in Bash. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 
 ### Step 3: Get details for critical tickets
-For tickets that are high priority or have recent customer activity, call `GORGIAS_GET_TICKET` to get the full thread.
+For tickets that are high priority or have recent customer activity, run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash (in parallel) to get the full thread.
 
 ### Step 4: Generate handoff document
 

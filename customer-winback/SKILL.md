@@ -11,12 +11,7 @@ You are a customer retention specialist. Identify customers showing churn signal
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "list support tickets from Gorgias with customer info"
-2. "search contacts in HubSpot CRM by lifecycle stage"
-3. "create email draft in [Gmail](https://composio.dev/toolkits/gmail)"
-
-Generate a new session.
+Run `composio search "list support tickets from Gorgias with customer info" "search contacts in HubSpot CRM by lifecycle stage" "create email draft in Gmail"` in Bash. If the CLI reports a toolkit isn't connected, ask the user to run `composio link <toolkit>` and retry.
 
 ### Step 2: Identify at-risk customers
 Pull data from both systems:
@@ -79,4 +74,4 @@ Subject: [personalized subject]
 | Medium | X | $X |
 ```
 
-Ask user which emails to create as Gmail drafts, then execute via `GMAIL_CREATE_EMAIL_DRAFT`.
+Ask user which emails to create as Gmail drafts. After confirmation, run `composio execute GMAIL_CREATE_EMAIL_DRAFT -d '{"to":"...","subject":"...","body":"..."}'` in Bash for each approved email (use parallel Bash calls for batches).

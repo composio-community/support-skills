@@ -14,21 +14,17 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with two queries:
-1. "get support ticket details and messages from Gorgias"
-2. "create an email draft in Gmail"
-
-Generate a new session.
+Run `composio search "get support ticket details and messages from Gorgias" "create an email draft in Gmail"` in Bash.
 
 ### Step 2: Get tool schemas
-Call `COMPOSIO_GET_TOOL_SCHEMAS` for:
+Run `composio execute <SLUG> --get-schema` in Bash (in parallel) for:
 - `GORGIAS_GET_TICKET`
 - `GMAIL_CREATE_EMAIL_DRAFT`
 
 ### Step 3: Fetch ticket context
-Call `COMPOSIO_MULTI_EXECUTE_TOOL` with `GORGIAS_GET_TICKET` using the ticket ID.
+Run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 
-Extract from the response:
+Parse the JSON output and extract:
 - Full message thread (all customer and agent messages)
 - Customer name and email
 - Ticket subject and tags
@@ -77,8 +73,5 @@ Subject: Re: [original subject]
 
 ### Step 6: Execute (on user choice)
 If the user chooses to create a Gmail draft:
-- Call `COMPOSIO_MULTI_EXECUTE_TOOL` with `GMAIL_CREATE_EMAIL_DRAFT`
-- Set the recipient to the customer's email
-- Set the subject with "Re: " prefix
-- Set the body to the approved draft text
-- Confirm the draft was created with a link if available
+- Run `composio execute GMAIL_CREATE_EMAIL_DRAFT -d '{"to":"<customer email>","subject":"Re: <original subject>","body":"<approved draft text>"}'` in Bash
+- Parse the JSON output and confirm the draft was created with a link if available

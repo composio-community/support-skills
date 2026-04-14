@@ -14,14 +14,10 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with two queries:
-1. "search for customer support tickets by customer email in Gorgias"
-2. "search for contact by email or name in HubSpot CRM and get contact history"
-
-Generate a new session.
+Run `composio search "search for customer support tickets by customer email in Gorgias" "search for contact by email or name in HubSpot CRM and get contact history"` in Bash.
 
 ### Step 2: Get tool schemas
-Call `COMPOSIO_GET_TOOL_SCHEMAS` for these slugs (using session_id):
+Run `composio execute <SLUG> --get-schema` in Bash (in parallel) for each of these slugs:
 - `GORGIAS_LIST_TICKETS`
 - `GORGIAS_GET_TICKET`
 - `HUBSPOT_SEARCH_CONTACTS_BY_CRITERIA`
@@ -29,14 +25,16 @@ Call `COMPOSIO_GET_TOOL_SCHEMAS` for these slugs (using session_id):
 - `HUBSPOT_SEARCH_CRM_OBJECTS_BY_CRITERIA`
 
 ### Step 3: Search in parallel
-Run these in parallel via `COMPOSIO_MULTI_EXECUTE_TOOL`:
-1. `GORGIAS_LIST_TICKETS` - filter by customer email/name
-2. `HUBSPOT_SEARCH_CONTACTS_BY_CRITERIA` - search by the customer identifier
+Run these in parallel (either as parallel Bash calls, or via `composio execute --parallel GORGIAS_LIST_TICKETS -d '{...}' HUBSPOT_SEARCH_CONTACTS_BY_CRITERIA -d '{...}'`):
+1. `GORGIAS_LIST_TICKETS` — filter by customer email/name
+2. `HUBSPOT_SEARCH_CONTACTS_BY_CRITERIA` — search by the customer identifier
+
+If the CLI reports a toolkit isn't connected, ask the user to run `composio link gorgias` or `composio link hubspot` and retry.
 
 ### Step 4: Deep dive
-Based on results from Step 3:
-- For Gorgias: Get details of the most recent 5 tickets using `GORGIAS_GET_TICKET`
-- For HubSpot: Use the contact_id to fetch engagement history with `HUBSPOT_SEARCH_CRM_OBJECTS_BY_CRITERIA` (notes, emails, calls)
+Parse the JSON output from Step 3 and based on results:
+- For Gorgias: Run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in parallel Bash calls for the most recent 5 tickets
+- For HubSpot: Use the contact_id to fetch engagement history with `composio execute HUBSPOT_SEARCH_CRM_OBJECTS_BY_CRITERIA -d '{...contact_id...}'` (notes, emails, calls)
 
 ### Step 5: Present the 360 View
 

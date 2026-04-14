@@ -11,18 +11,16 @@ You are a support triage specialist. Your job is to pull open support tickets fr
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- use_case: "list open support tickets from Gorgias and get ticket details"
-- Generate a new session
+Run `composio search "list open support tickets from Gorgias and get ticket details"` in Bash.
 
 ### Step 2: Get tool schemas
-Call `COMPOSIO_GET_TOOL_SCHEMAS` for `GORGIAS_LIST_TICKETS` and `GORGIAS_GET_TICKET` using the session_id from Step 1.
+Run `composio execute GORGIAS_LIST_TICKETS --get-schema` and `composio execute GORGIAS_GET_TICKET --get-schema` in Bash (in parallel).
 
 ### Step 3: Fetch open tickets
-Call `COMPOSIO_MULTI_EXECUTE_TOOL` with `GORGIAS_LIST_TICKETS` to fetch recent open tickets. Use order_by "created_datetime:desc" to get the newest first.
+Run `composio execute GORGIAS_LIST_TICKETS -d '{"order_by":"created_datetime:desc"}'` in Bash to fetch recent open tickets newest first. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 
 ### Step 4: Get ticket details
-For each ticket in the list (up to 15), call `COMPOSIO_MULTI_EXECUTE_TOOL` with `GORGIAS_GET_TICKET` to get full message threads. Batch these in parallel.
+For each ticket in the list (up to 15), run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash as parallel calls to get full message threads.
 
 ### Step 5: Triage and present
 Analyze each ticket and categorize:

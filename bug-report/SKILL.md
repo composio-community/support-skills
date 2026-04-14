@@ -14,15 +14,10 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "get support ticket details from Gorgias"
-2. "create an issue in Linear"
-3. "list teams in Linear"
-
-Generate a new session.
+Run `composio search "get support ticket details from Gorgias" "create an issue in Linear" "list teams in Linear"` in Bash.
 
 ### Step 2: Fetch ticket
-Call `GORGIAS_GET_TICKET` with the ticket ID. Extract all messages to understand the full bug context.
+Run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash. Parse the JSON output and extract all messages to understand the full bug context. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 
 ### Step 3: Build the bug report
 Analyze the ticket thread and extract:
@@ -72,9 +67,9 @@ Analyze the ticket thread and extract:
 ```
 
 ### Step 4: Offer to create Linear issue
-Ask the user if they want to create this as a Linear issue:
-1. Fetch `LINEAR_LIST_LINEAR_TEAMS` to let user pick the team
-2. Create the issue with `LINEAR_CREATE_LINEAR_ISSUE` including the full bug report as the description
-3. Return the Linear issue link
+Ask the user if they want to create this as a Linear issue. After confirmation:
+1. Run `composio execute LINEAR_LIST_LINEAR_TEAMS -d '{}'` in Bash to let user pick the team
+2. Run `composio execute LINEAR_CREATE_LINEAR_ISSUE -d '{...team_id, title, description...}'` in Bash, including the full bug report as the description
+3. Parse the JSON output and return the Linear issue link
 
 If info is missing from the ticket (e.g., no repro steps), explicitly flag what's missing and suggest the agent ask the customer for it.

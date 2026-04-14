@@ -11,18 +11,13 @@ You are a support reporting analyst. Generate a comprehensive weekly support dig
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-1. "list support tickets from [Gorgias](https://composio.dev/toolkits/gorgias) filtered by date range"
-2. "get ticket details from Gorgias"
-3. "send a formatted message to Slack channel"
-
-Generate a new session.
+Run `composio search "list support tickets from Gorgias filtered by date range" "get ticket details from Gorgias" "send a formatted message to Slack channel"` in Bash.
 
 ### Step 2: Fetch the week's data
-Call `GORGIAS_LIST_TICKETS` to pull all tickets from the past 7 days. Paginate to get the complete set.
+Run `composio execute GORGIAS_LIST_TICKETS -d '{...past 7 days...}'` in Bash to pull all tickets from the past 7 days. Paginate to get the complete set. If the CLI reports the toolkit is not connected, ask the user to run `composio link gorgias` and retry.
 
 ### Step 3: Enrich key tickets
-For a representative sample (up to 25 tickets), call `GORGIAS_GET_TICKET` in parallel to get response time data and message details.
+For a representative sample (up to 25 tickets), run `composio execute GORGIAS_GET_TICKET -d '{"ticket_id":"<ID>"}'` in Bash as parallel calls to get response time data and message details.
 
 ### Step 4: Compile the digest
 
@@ -61,7 +56,7 @@ For a representative sample (up to 25 tickets), call `GORGIAS_GET_TICKET` in par
 
 ### Step 5: Confirm and post to Slack
 Show the digest to the user for review. After confirmation:
-1. Find the target Slack channel with `SLACK_FIND_CHANNELS`
+1. Run `composio execute SLACK_FIND_CHANNELS -d '{...}'` in Bash to find the target Slack channel, parse the JSON output for the channel ID
 2. Format the digest as a Slack message (use markdown_text for formatting)
-3. Post with `SLACK_SEND_MESSAGE`
-4. Confirm with the posted message link
+3. Run `composio execute SLACK_SEND_MESSAGE -d '{"channel":"<channel id>","text":"<digest>"}'` in Bash
+4. Parse the JSON output and confirm with the posted message link

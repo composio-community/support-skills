@@ -14,15 +14,10 @@ The user's input is: $ARGUMENTS
 ## Workflow
 
 ### Step 1: Discover tools
-Call `COMPOSIO_SEARCH_TOOLS` with:
-- use_case: "find contact information and company data by email using LeadIQ"
-- use_case: "look up professional contact details using RocketReach"
-- use_case: "verify and enrich email address using Clearout"
-
-Generate a new session.
+Run `composio search "find contact information and company data by email using LeadIQ" "look up professional contact details using RocketReach" "verify and enrich email address using Clearout"` in Bash.
 
 ### Step 2: Enrich in parallel
-Run available enrichment tools in parallel via `COMPOSIO_MULTI_EXECUTE_TOOL` with the provided email or company name.
+Run available enrichment tools in parallel Bash calls (or via `composio execute --parallel <SLUG_A> -d '{"email":"<email>"}' <SLUG_B> -d '{"email":"<email>"}'`) with the provided email or company name. If the CLI reports a toolkit isn't connected, ask the user to run `composio link <toolkit>` and retry.
 
 ### Step 3: Present enriched profile
 
