@@ -1,4 +1,33 @@
-# Support Skills
+<h1 align="center">Support Skills</h1>
+
+<p align="center">
+<a href="https://dashboard.composio.dev/login?utm_source=Github&utm_medium=Github&utm_campaign=2026-04&utm_content=SupportSkills">
+ <img width="1280" height="640" alt="Support Skills" src="https://github.com/user-attachments/assets/bab01a9e-f73b-4aae-a567-07304be3aa20" />
+</a>
+<p align="center">
+  <a href="https://awesome.re">
+    <img src="https://awesome.re/badge.svg" alt="Awesome" />
+  </a>
+  <a href="https://makeapullrequest.com">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" />
+  </a>
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">
+    <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square" alt="License: Apache-2.0" />
+  </a>
+</p>
+<div>
+<p align="center">
+  <a href="https://twitter.com/composio">
+    <img src="https://img.shields.io/badge/Follow on X-000000?style=for-the-badge&logo=x&logoColor=white" alt="Follow on X" />
+  </a>
+  <a href="https://www.linkedin.com/company/composiohq/">
+    <img src="https://img.shields.io/badge/Follow on LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Follow on LinkedIn" />
+  </a>
+  <a href="https://discord.com/invite/composio">
+    <img src="https://img.shields.io/badge/Join our Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord" />
+  </a>
+  </p>
+</div>
 
  Support skills for AI agents for Claude Code, Codex, Cursor and more. Triage tickets, draft replies, track SLAs, detect churn risk, escalate bugs, generate CSAT follow-ups, build macros, translate messages, sync CRM contacts, and run weekly digests, without leaving your terminal.
 
